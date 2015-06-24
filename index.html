@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Icon Movements Version1</title>
+	<!-- CSS Custom -->
+	<style>
+		* {
+			position: absolute;
+		}
+		#swipeIcon {
+		  background-color: blue;
+		  left: -90px;
+  		  top: -55px;
+		  height: 582px;
+		  width: 582px;
+		}
+		#iconContainer {
+		  left: -195px;
+		  top: 0px;
+		}
+		#container {
+		  left: 250px;
+		  height: 472px;
+		  overflow: hidden;
+		  top: 110px;
+		  width: 402px;
+		}
+		#center {
+			background-color: rgb(0, 228, 255);
+			z-index: 100;
+			height: 471px;
+			width: 2px;
+			transform: translate(201px, 0px);
+			opacity: .5;
+		}
+		#centerV1 {
+		  background-color: rgb(0, 228, 255);
+		  z-index: 100;
+		  height: 2px;
+		  width: 402px;
+		  transform: translate(0px, 236px);
+		  opacity: .5;
+		}
+		body {  margin-top: -80px;}
+		/*Icon Position*/
+		#icon1 {transform: translate(342px, 245px) scale(0.9);}
+		#icon2 {transform: translate(245px, 71px) scale(0.9);}
+		#icon3 {transform: translate(420px, 245px) scale(0.2);}
+		#icon4 {transform: translate(109px, 332px) scale(0.7);}
+		#icon5 {transform: translate(148px, 245px) scale(0.9);}
+		#icon6 {transform: translate(196px, 158px) scale(0.9);}
+		#icon7 {transform: translate(294px, 158px) scale(0.9);}
+		#icon8 {transform: translate(109px, 158px) scale(0.7);}
+		#icon9 {transform: translate(196px, 332px) scale(0.9);}
+		#icon10 {transform: translate(381px, 332px) scale(0.7);}
+		#icon11 {transform: translate(381px, 158px) scale(0.7);}
+		#icon12 {transform: translate(342px, 71px) scale(0.7);}
+		#icon13 {transform: translate(245px, 419px) scale(0.9);}
+		#icon14 {transform: translate(148px, 419px) scale(0.7);}
+		#icon15 {transform: translate(196px, 463px) scale(0.2);}
+		#icon16 {transform: translate(70px, 245px) scale(0.2);}
+		#icon17 {transform: translate(245px, 245px) scale(1);}
+		#icon18 {transform: translate(342px, 419px) scale(0.7);}
+		#icon19 {transform: translate(148px, 71px) scale(0.7);}
+		#icon20 {transform: translate(294px, 332px) scale(0.9);}
+		#icon21 {transform: translate(294px, 463px) scale(0.2);}
+		#icon22 {transform: translate(294px, 27px) scale(0.2);}
+		#icon23 {transform: translate(196px, 27px) scale(0.2);}
+		#icon24 {transform: translate(420px, 419px) scale(0.2);}
+		#icon25 {transform: translate(70px, 419px) scale(0.2);}
+		#icon26 {transform: translate(70px, 71px) scale(0.2);}
+		#icon27 {transform: translate(420px, 71px) scale(0.2);}
+		
+		#icon17 {opacity: 0.5;z-index: 1;}
+	</style>
+	<script src="d.js"></script>
+</head>
+<body>
+	<!-- GUIDE >>>>--><img src="guide.png" style="display:none; opacity: 0.5; z-index:20;">
+	<div id="container">
+		<div id="center"></div>
+		<div id="centerV1"></div>
+		<div id="swipeIcon">
+			<div id="icon1"></div>
+			<div id="icon2"></div>
+			<div id="icon3"></div>
+			<div id="icon4"></div>
+			<div id="icon5"></div>
+			<div id="icon6"></div>
+			<div id="icon7"></div>
+			<div id="icon8"></div>
+			<div id="icon9"></div>
+			<div id="icon10"></div>
+			<div id="icon11"></div>
+			<div id="icon12"></div>
+			<div id="icon13"></div>
+			<div id="icon14"></div>
+			<div id="icon15"></div>
+			<div id="icon16"></div>
+			<div id="icon17"></div>
+			<div id="icon18"></div>
+			<div id="icon19"></div>
+			<div id="icon20"></div>
+			<div id="icon21"></div>
+			<div id="icon22"></div>
+			<div id="icon23"></div>
+			<div id="icon24"></div>
+			<div id="icon25"></div>
+			<div id="icon26"></div>
+			<div id="icon27"></div>
+		</div>
+	</div>
+	<!-- JS Custom -->
+	<script>
+		addEvent(window, 'load', function() {
+			var startX, startY, distanceX, distanceY, speedSwipe = 200, isTouchStart = false,
+				currentPositionX = 0, currentPositionY = 0, preferredWidth = 95, preferredHeight = 95,
+				movementX = 0, movementY = 0, isTrack = false, 
+				//  New Variable
+				xCenter = 245, yCenter = 245, centerHundred = 444, totalVal;
+			var pathIcon = 'icons/'
+			var imagesPath = [pathIcon+'alarm.png',pathIcon+'calendar.png',pathIcon+'edjing.png',pathIcon+'fitness.png',pathIcon+'global_map.png',
+							  pathIcon+'itunes.png',pathIcon+'mail.png',pathIcon+'maps.png',pathIcon+'metroapp.png',pathIcon+'passbook.png',
+							  pathIcon+'phone.png',pathIcon+'photo.png',pathIcon+'gallery.png',pathIcon+'settings.png',pathIcon+'stock.png',
+							  pathIcon+'stop_watch.png',pathIcon+'time.png',pathIcon+'video.png',pathIcon+'weather.png',pathIcon+'wechat.png',
+							  pathIcon+'adobe_air.png',pathIcon+'adobe_reader.png',pathIcon+'Adobe.png',pathIcon+'after_effects.png',
+							  pathIcon+'aim.png',pathIcon+'airplay.png',pathIcon+'amazon.png'];
+			function init() {
+				addEvent(getElem('container'),'mousedown',startHandler);
+			    addEvent(getElem('container'),'mousemove',moveHandler);
+			    addEvent(getElem('container'),'mouseup',endHandler);
+			    //addEvent(getElem('container'),'mouseout',endHandler);
+			    embedImage();
+			    function embedImage() {
+			    	for (var i = 0; i <= 26; i++) {
+			    		getEmbedImage('icon'+(i + 1 ), imagesPath[i], '97px', '97px', '97px 97px')
+			    	};
+			    }
+			}
+			startHandler = function (e){
+			    e.preventDefault();
+			    if(mobileChecker()){
+			    	startX = e.touches[0].pageX;
+			    	startY = e.touches[0].pageY;
+			    }else{
+			    	startX = e.pageX;
+			    	startY = e.pageY
+			    }
+			    //track('startX '+startX +' startY '+startY);
+			    isTouchStart = true;
+		    } 
+		    moveHandler = function (e){
+			    e.preventDefault();
+			    // TO GET THE middle of the container get the position of the container that will minus the mouse pointer. After that divide the size by 2 to get the center.
+			   	//trace('X: ' + Math.abs((e.pageX - 250) - 201) + ' Y: ' + Math.abs(236 - (e.pageY - 110)));
+			    //trace(getPos(getElem('icon1')));
+			    //trace(getElem('icon1').offsetLeft)
+			    //trace('X: ' + (152 - 245) + ' Y: ' + (245 - 245));
+			    //trace(getStyle(getElem('icon1'),'transform'));
+			    if(isTouchStart){
+				    if(mobileChecker()){
+					    distanceX = e.touches[0].pageX - startX;
+					    distanceY = e.touches[0].pageY - startY;
+				    }else{
+					    distanceX = e.pageX - startX;
+					    distanceY = e.pageY - startY;
+				    }
+				    // if( ((e.pageX - 250) - 201) >= 1 && (236 - (e.pageY - 110)) >= 1 ) {
+				    // 	trace('Quadrant One');
+				    // } else if ( ((e.pageX - 250) - 201) <= -1 && (236 - (e.pageY - 110)) >= 1 ) {
+				    // 	trace('Quadrant Two');
+				    // } else if( ((e.pageX - 250) - 201) <= -1 && (236 - (e.pageY - 110)) <= -1 ) {
+				    // 	trace('Quadrant Three');
+				    // } else if( ((e.pageX - 250) - 201) >= 1 && (236 - (e.pageY - 110)) <= -1 ) {
+				    // 	trace('Quadrant Four');
+				    // } else {
+				    // 	trace('Center');
+				    // }
+				    if(currentPositionX != Math.abs(currentPositionX - (distanceX + currentPositionX)) && currentPositionY != Math.abs(currentPositionY - (distanceY + currentPositionY))) {
+				    	movementX = distanceX + currentPositionX;
+				    	movementY = distanceY + currentPositionY;
+					    for (var i = 1; i <= 27; i++) {
+					    	if(i===1) {
+					    		trace('Icon 1 X: '+ (342 + movementX)+' Y: '+ (245 + movementY));      
+					    		//transform(getElem('icon'+i),'translate3d('+(342+movementX)+'px, '+(245+movementY)+'px,0) scale(0.9)');  // First Icon
+					    		transform(getElem('icon'+i),'translate3d('+(342+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((342 + movementX), (245 + movementY),i)+')');
+					    	} else if(i===2) {
+					    		//transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(71+movementY)+'px,0) scale(0.9)');  // Second Icon
+					    	} else if(i===3) { 
+					    		trace('Icon 3 X: '+ (420 + movementX)+' Y: '+ (245 + movementY));  
+					    		//transform(getElem('icon'+i),'translate3d('+(420+movementX)+'px, '+(245+movementY)+'px,0) scale(0.2)'); // Third Icon
+					    		transform(getElem('icon'+i),'translate3d('+(420+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((420 + movementX), (245 + movementY),i)+')');
+					    	} else if(i===4) { 
+					    		//transform(getElem('icon'+i),'translate3d('+(109+movementX)+'px, '+(332+movementY)+'px,0) scale(0.7)'); // Fourth Icon
+					    	} else if(i===5) { 
+					    		trace('Icon 5 X: '+ (148 + movementX)+' Y: '+ (245 + movementY));
+					    		transform(getElem('icon'+i),'translate3d('+(148+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((148 + movementX), (245 + movementY),i)+')');
+					    		//transform(getElem('icon'+i),'translate3d('+(148+movementX)+'px, '+(245+movementY)+'px,0) scale(0.9)'); // Fifth Icon
+					    	} else if(i===6) {
+					    		//transform(getElem('icon'+i),'translate3d('+(196+movementX)+'px, '+(158+movementY)+'px,0) scale(0.9)');  // Sixth Icon
+					    	} else if(i===7) {
+					    		//transform(getElem('icon'+i),'translate3d('+(294+movementX)+'px, '+(158+movementY)+'px,0) scale(0.9)'); // Seventh Icom
+					    	} else if(i===8) {
+					    		//transform(getElem('icon'+i),'translate3d('+(109+movementX)+'px, '+(158+movementY)+'px,0) scale(0.7)'); // Eigth Icon
+					    	} else if(i===9) { 
+					    		//transform(getElem('icon'+i),'translate3d('+(196+movementX)+'px, '+(332+movementY)+'px,0) scale(0.9)');  // Ninth Icon
+					    	} else if(i===10) {
+					    		//transform(getElem('icon'+i),'translate3d('+(381+movementX)+'px, '+(332+movementY)+'px,0) scale(0.7)');  // Tenth Icon
+					    	} else if(i===11) {
+					    		//transform(getElem('icon'+i),'translate3d('+(381+movementX)+'px, '+(158+movementY)+'px,0) scale(0.7)');  // Eleven Icon
+					    	} else if(i===12) {
+					    		//transform(getElem('icon'+i),'translate3d('+(342+movementX)+'px, '+(71+movementY)+'px,0) scale(0.7)');  // Twelve Icon
+					    	} else if(i===13) { 
+					    		//transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(419+movementY)+'px,0) scale(0.9)'); // Thirteen Icom
+					    	} else if(i===14) {
+					    		//transform(getElem('icon'+i),'translate3d('+(148+movementX)+'px, '+(419+movementY)+'px,0) scale(0.7)');  // Fourteen Icon
+					    	} else if(i===15) {
+					    		//transform(getElem('icon'+i),'translate3d('+(196+movementX)+'px, '+(463+movementY)+'px,0) scale(0.2)');  // Fifteen Icon
+					    	} else if(i===16) {
+					    		trace('Icon 16 X: '+ (148 + movementX)+' Y: '+ (245 + movementY));
+					    		transform(getElem('icon'+i),'translate3d('+(70+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((70 + movementX), (245 + movementY),i)+')');
+					    		//transform(getElem('icon'+i),'translate3d('+(70+movementX)+'px, '+(245+movementY)+'px,0) scale(0.2)');  // Sixteen Icon
+					    	} else if(i===17) { // Seventh Icon
+					    		trace('Icon 17 X: '+ (245 + movementX)+' Y: '+ (245 + movementY));
+					    		transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((245 + movementX), (245 + movementY),i)+')');
+					    		//transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(245+movementY)+'px,0) scale(1)');
+					    		// if( Math.abs((245 + movementX) - xCenter) <= 50 && Math.abs((245 + movementY) - yCenter) <= 45 ) {
+					    		// // 	//trace('Icon 17 First Condition');
+					    		//  	transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(245+movementY)+'px,0) scale(1)');
+					    		// } else if ( Math.abs((245 + movementX) - xCenter) <= 45 && Math.abs((245 + movementY) - yCenter) <= 214 ) {
+					    		// 	//trace('Icon 17 Second Condition');
+					    		// 	transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(245+movementY)+'px,0) scale(.9)');
+					    		// } else if ( Math.abs((245 + movementX) - xCenter) <= 92 && Math.abs((245 + movementY) - yCenter) <= 125 ) {
+					    		// 	//trace('Icon 17 Second_v1 Condition');
+					    		// 	transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(245+movementY)+'px,0) scale(.9)');
+					    		// } else if ( Math.abs((245 + movementX) - xCenter) <= 140 && Math.abs((245 + movementY) - yCenter) <= 37 ) {
+					    		// 	//trace('Icon 17 Second_v2 Condition');
+					    		// 	transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(245+movementY)+'px,0) scale(.9)');
+					    		// } else if ( Math.abs((245 + movementX) - xCenter) <= 130 && Math.abs((245 + movementY) - yCenter) <= 205 ) {
+					    		// 	//trace('Icon 17 Third Condition');
+					    		// 	transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(245+movementY)+'px,0) scale(.9)');
+					    		// } else if ( Math.abs((245 + movementX) - xCenter) <= 269 && Math.abs((245 + movementY) - yCenter) <= 116 ) {
+					    		// 	//trace('Icon 17 Third_v1 Condition');
+					    		// 	transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(245+movementY)+'px,0) scale(.9)');
+					    		// } else if ( Math.abs((245 + movementX) - xCenter) <= 185 && Math.abs((245 + movementY) - yCenter) <= 17 ) {
+					    		// 	//trace('Icon 17 Third_v1 Condition');
+					    		// 	transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(245+movementY)+'px,0) scale(.9)');
+					    		// }
+
+					    		// transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(245+movementY)+'px,0) scale(1)');
+					    		// if((245+movementX) <= 245) {
+					    		// 	transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(245+movementY)+'px,0) scale('+leftComp((245 + (movementX + movementY)),i)+')');
+					    		// 	trace('Icon 17 Left');
+					    		// } 
+
+					    // 		else if((245+movementX) >= 244) {
+					    // 			//transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(245+movementY)+'px,0) scale('+rightComp((245 - movementX),i)+')');
+					    // 			trace('Icon 17 Right')
+					    // 		} 
+					    // 		if((245+movementY) <= 245) {
+									// trace('Icon 17 Up')
+									// transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(245+movementY)+'px,0) scale('+rightComp((245 - movementX),i)+')');
+					    // 		}
+					    	} else if(i===18) {
+					    		//transform(getElem('icon'+i),'translate3d('+(342+movementX)+'px, '+(419+movementY)+'px,0) scale(0.7)');  // Eighteen Icon
+					    	} else if(i===19) {
+					    		//transform(getElem('icon'+i),'translate3d('+(148+movementX)+'px, '+(71+movementY)+'px,0) scale(0.7)');  // Ninteen Icon
+					    	} else if(i===20) { 
+					    		//transform(getElem('icon'+i),'translate3d('+(294+movementX)+'px, '+(332+movementY)+'px,0) scale(0.9)'); // Twenty Icon
+					    	} else if(i===21) {
+					    		//transform(getElem('icon'+i),'translate3d('+(294+movementX)+'px, '+(463+movementY)+'px,0) scale(0.2)');  // Twenty One Icon
+					    	} else if(i===22) {
+					    		//transform(getElem('icon'+i),'translate3d('+(294+movementX)+'px, '+(27+movementY)+'px,0) scale(0.2)');  // Twenty Two Icon
+					    	} else if(i===23) {
+					    		//transform(getElem('icon'+i),'translate3d('+(196+movementX)+'px, '+(27+movementY)+'px,0) scale(0.2)');  // Twenty Three Icon
+					    	} else if(i===24) {
+					    		//transform(getElem('icon'+i),'translate3d('+(420+movementX)+'px, '+(419+movementY)+'px,0) scale(0.2)');  // Twenty Four Icon
+					    	} else if(i===25) {
+					    		//transform(getElem('icon'+i),'translate3d('+(70+movementX)+'px, '+(419+movementY)+'px,0) scale(0.2)');  // Twenty Five Icon
+					    	} else if(i===26) {
+					    		//transform(getElem('icon'+i),'translate3d('+(70+movementX)+'px, '+(71+movementY)+'px,0) scale(0.2)');  // Twenty Six Icon
+					    	} else if(i===27) {
+					    		//transform(getElem('icon'+i),'translate3d('+(420+movementX)+'px, '+(71+movementY)+'px,0) scale(0.2)');  // Twenty Seven Icon
+					    	};
+					    };
+				    }
+			    }
+		    }
+		    endHandler = function(e) {
+		    	e.preventDefault();
+		    	currentPositionX = movementX;
+				currentPositionY = movementY;
+		    	isTouchStart = false; distanceX = 0; distanceY = 0;isTrack = true;
+		    };
+		    function computationMark(x,y,i) {
+		    	trace(i + ' X '+x+' Y '+y);
+		    	// Scale is 1
+		    	if((x >= 220) && (x <= 270) && (y >= 220) && (y <= 270)){
+		    		//trace('Scale 1 Center');
+		    		return 1;
+		    	}else 
+		    	// Scale is .9
+		    	if((x >= 104) && (x <= 219) && (y >= 220) & (y <= 270)) {
+		    		//trace('Scale 0.9 Left');
+		    		return 0.9;
+		    	} else 
+		    	if((x >= 271) && (x <= 386) && (y >= 220) & (y <= 270)) {
+		    		//trace('Scale 0.9 Right');
+		    		return 0.9;
+		    	} else {
+		    		return 0.2;
+		    	}
+		    }
+		    init();
+		});
+		
+	</script>
+</body>
+</html>
+
