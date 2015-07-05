@@ -73,7 +73,7 @@
 		#icon25 {transform: translate(70px, 419px) scale(0.2);}
 		#icon26 {transform: translate(70px, 71px) scale(0.2);}
 		#icon27 {transform: translate(420px, 71px) scale(0.2);}
-		
+
 		#icon1,#icon3,#icon5,#icon16,#icon17 {opacity: 0.8;z-index: 1;}
 	</style>
 	<script src="d.js"></script>
@@ -118,7 +118,7 @@
 		addEvent(window, 'load', function() {
 			var startX, startY, distanceX, distanceY, speedSwipe = 200, isTouchStart = false,
 				currentPositionX = 0, currentPositionY = 0, preferredWidth = 95, preferredHeight = 95,
-				movementX = 0, movementY = 0, isTrack = false, 
+				movementX = 0, movementY = 0, isTrack = false,
 				//  New Variable
 				xCenter = 245, yCenter = 245, centerHundred = 444, totalVal;
 			var pathIcon = 'icons/'
@@ -151,7 +151,7 @@
 			    }
 			    //track('startX '+startX +' startY '+startY);
 			    isTouchStart = true;
-		    } 
+		    }
 		    moveHandler = function (e){
 			    e.preventDefault();
 			    // TO GET THE middle of the container get the position of the container that will minus the mouse pointer. After that divide the size by 2 to get the center.
@@ -184,16 +184,16 @@
 				    	movementY = distanceY + currentPositionY;
 					    for (var i = 1; i <= 27; i++) {
 					    	if(i===1) {
-					    		//trace('Icon 1 X: '+ (342 + movementX)+' Y: '+ (245 + movementY));      
+					    		//trace('Icon 1 X: '+ (342 + movementX)+' Y: '+ (245 + movementY));
 					    		//transform(getElem('icon'+i),'translate3d('+(342+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((342 + movementX), (245 + movementY),i)+')');
 					    	} else if(i===2) {
 					    		//transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(71+movementY)+'px,0) scale(0.9)');  // Second Icon
-					    	} else if(i===3) { 
-					    		//trace('Icon 3 X: '+ (420 + movementX)+' Y: '+ (245 + movementY));  
+					    	} else if(i===3) {
+					    		//trace('Icon 3 X: '+ (420 + movementX)+' Y: '+ (245 + movementY));
 					    		//transform(getElem('icon'+i),'translate3d('+(420+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((420 + movementX), (245 + movementY),i)+')');
-					    	} else if(i===4) { 
+					    	} else if(i===4) {
 					    		//transform(getElem('icon'+i),'translate3d('+(109+movementX)+'px, '+(332+movementY)+'px,0) scale(0.7)'); // Fourth Icon
-					    	} else if(i===5) { 
+					    	} else if(i===5) {
 					    		//trace('Icon 5 X: '+ (148 + movementX)+' Y: '+ (245 + movementY));
 					    		//transform(getElem('icon'+i),'translate3d('+(148+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((148 + movementX), (245 + movementY),i)+')');
 					    	} else if(i===6) {
@@ -202,7 +202,7 @@
 					    		//transform(getElem('icon'+i),'translate3d('+(294+movementX)+'px, '+(158+movementY)+'px,0) scale(0.9)'); // Seventh Icom
 					    	} else if(i===8) {
 					    		//transform(getElem('icon'+i),'translate3d('+(109+movementX)+'px, '+(158+movementY)+'px,0) scale(0.7)'); // Eigth Icon
-					    	} else if(i===9) { 
+					    	} else if(i===9) {
 					    		//transform(getElem('icon'+i),'translate3d('+(196+movementX)+'px, '+(332+movementY)+'px,0) scale(0.9)');  // Ninth Icon
 					    	} else if(i===10) {
 					    		//transform(getElem('icon'+i),'translate3d('+(381+movementX)+'px, '+(332+movementY)+'px,0) scale(0.7)');  // Tenth Icon
@@ -210,7 +210,7 @@
 					    		//transform(getElem('icon'+i),'translate3d('+(381+movementX)+'px, '+(158+movementY)+'px,0) scale(0.7)');  // Eleven Icon
 					    	} else if(i===12) {
 					    		//transform(getElem('icon'+i),'translate3d('+(342+movementX)+'px, '+(71+movementY)+'px,0) scale(0.7)');  // Twelve Icon
-					    	} else if(i===13) { 
+					    	} else if(i===13) {
 					    		//transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(419+movementY)+'px,0) scale(0.9)'); // Thirteen Icom
 					    	} else if(i===14) {
 					    		//transform(getElem('icon'+i),'translate3d('+(148+movementX)+'px, '+(419+movementY)+'px,0) scale(0.7)');  // Fourteen Icon
@@ -226,7 +226,7 @@
 					    		//transform(getElem('icon'+i),'translate3d('+(342+movementX)+'px, '+(419+movementY)+'px,0) scale(0.7)');  // Eighteen Icon
 					    	} else if(i===19) {
 					    		//transform(getElem('icon'+i),'translate3d('+(148+movementX)+'px, '+(71+movementY)+'px,0) scale(0.7)');  // Ninteen Icon
-					    	} else if(i===20) { 
+					    	} else if(i===20) {
 					    		//transform(getElem('icon'+i),'translate3d('+(294+movementX)+'px, '+(332+movementY)+'px,0) scale(0.9)'); // Twenty Icon
 					    	} else if(i===21) {
 					    		//transform(getElem('icon'+i),'translate3d('+(294+movementX)+'px, '+(463+movementY)+'px,0) scale(0.2)');  // Twenty One Icon
@@ -249,13 +249,13 @@
 		    }
 		    endHandler = function(e) {e.preventDefault();currentPositionX = movementX;currentPositionY = movementY;isTouchStart = false; distanceX = 0; distanceY = 0;isTrack = true;};
 		    /*
-		     * 
+		     *
 		     */
 		    function computationMark(x,y,i) {
 		    	if((x >= 220) && (x <= 270) && (y >= 220) && (y <= 270)){ // Scale is 1
 		    		//trace('Scale 1 Center');
 		    		return 1;
-		    	} else if((x >= 149) && (x <= 220) && (y >= 220) && (y <= 270)) { // Scale is .9
+		    	} else if((x >= 151) && (x <= 220) && (y >= 220) && (y <= 270)) { // Scale is .9
 		    		//trace('Scale 0.9 Left '+ x + ' '+ y);
 		    		//trace(ninetyCompLeft(x));
 		    		//return 0.9;
@@ -264,21 +264,20 @@
 		    		//trace('Scale 0.9 Right '+ x + ' '+ y);
 		    		//trace(ninetyCompRight(x));
 		    		return ninetyCompRight(x);
-		    	} else if((x >= 149) && (x <= 341) && (y >= 69) && (y <= 219)) { // Scale is .9
+		    	} else if((x >= 151) && (x <= 341) && (y >= 69) && (y <= 219)) { // Scale is .9
 		    		//trace('Scale 0.9 V2 Left '+ x + ' '+ y);
 		    		//trace(ninetyCompLeftUp(y));
 		    		return ninetyCompLeftUp(y);
-		    	} else if((x >= 149) && (x <= 341) && (y >= 271) && (y <= 419)) { // Scale is .9
+		    	} else if((x >= 151) && (x <= 341) && (y >= 271) && (y <= 419)) { // Scale is .9
 		    		//trace('Scale 0.9 V3 Left '+ x + ' '+ y);
 		    		return ninetyCompLeftDown(y);
-		    	} else if((x >= 109) && (x <= 148) && (y >= 70) && (y <= 219)) { // Scale is .9
+		    	} else if((x >= 109) && (x <= 150) && (y >= 70) && (y <= 219)) { // Scale is .9
 		    		//trace('Scale 0.7 Left '+ x + ' '+ y);
-		    		trace('Scale 0.7 Left '+seventyCompLeftUp(x,y))
 		    		return seventyCompLeftUp(x,y);
 		    		//return 0.7;
 		    	} else if((x >= 342) && (x <= 383) && (y >= 70) && (y <= 219)) { // Scale is .9
-		    		//trace('Scale 0.7 Right '+ x + ' '+ y);
-		    		return 0.7;
+		    		trace('Scale 0.7 Right '+ x + ' '+ y);
+		    		return seventyCompRightUp(x,y);
 		    	} else if((x >= 109) && (x <= 150) && (y >= 271) && (y <= 419)) { // Scale is .9
 		    		//trace('Scale 0.7 Left '+ x + ' '+ y);
 		    		return 0.7;
@@ -291,7 +290,7 @@
 		    	}
 		    }
 		    function ninetyCompLeft(x) {
-		    	var diffResult = (x - 149),quatDiff = diffResult/71,finalResult;
+		    	var diffResult = (x - 151),quatDiff = diffResult/61,finalResult;
 		    	if(quatDiff > 0.9) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.90};
 		    	return finalResult;
 		    }
@@ -311,13 +310,29 @@
 		    	return finalResult;
 		    }
 		    function seventyCompLeftUp(x,y) {
-		    	var diffResult = (x - 109),quatDiff = ((diffResult/39)- 0.20),finalResult;
-		    	if(quatDiff > 0.7) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.70};
+		    	if(y > 71) {
+			    	var diffResult = (x - 109),quatDiff = ((diffResult/39)- 0.20),finalResult;
+			    	if(quatDiff > 0.7) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.70};
+		    	} else {
+		    		var diffResult = (x - 148),quatDiff = ((diffResult/39)- 0.25),finalResult;
+			    	if(quatDiff > 0.7) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.70};
+		    	}
+		    	return finalResult;
+		    }
+		    function seventyCompRightUp(x,y) {
+		    	if(y > 71) {
+			    	var diffResult = Math.abs(x - 383),quatDiff = ((diffResult/41)- 0.20),finalResult;
+			    	trace();
+			    	if(quatDiff > 0.7) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.70};
+		    	} else {
+		    		var diffResult = Math.abs(x - 383),quatDiff = ((diffResult/41)- 0.25),finalResult;
+			    	if(quatDiff > 0.7) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.70};
+		    	}
 		    	return finalResult;
 		    }
 		    init();
 		});
-		
+
 	</script>
 </body>
 </html>
