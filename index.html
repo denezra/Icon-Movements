@@ -132,7 +132,7 @@
 				addEvent(getElem('container'),'mousedown',startHandler);
 			    addEvent(getElem('container'),'mousemove',moveHandler);
 			    addEvent(getElem('container'),'mouseup',endHandler);
-			    //addEvent(getElem('container'),'mouseout',endHandler);
+			    //addEvent(getElem('container'),'mouseleave',endHandler);
 			    embedImage();
 			    function embedImage() {
 			    	for (var i = 0; i <= 26; i++) {
@@ -185,17 +185,17 @@
 					    for (var i = 1; i <= 27; i++) {
 					    	if(i===1) {
 					    		//trace('Icon 1 X: '+ (342 + movementX)+' Y: '+ (245 + movementY));
-					    		//transform(getElem('icon'+i),'translate3d('+(342+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((342 + movementX), (245 + movementY),i)+')');
+					    		// transform(getElem('icon'+i),'translate3d('+(342+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((342 + movementX), (245 + movementY),i)+')');
 					    	} else if(i===2) {
 					    		//transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(71+movementY)+'px,0) scale(0.9)');  // Second Icon
 					    	} else if(i===3) {
 					    		//trace('Icon 3 X: '+ (420 + movementX)+' Y: '+ (245 + movementY));
-					    		//transform(getElem('icon'+i),'translate3d('+(420+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((420 + movementX), (245 + movementY),i)+')');
+					    		// transform(getElem('icon'+i),'translate3d('+(420+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((420 + movementX), (245 + movementY),i)+')');
 					    	} else if(i===4) {
 					    		//transform(getElem('icon'+i),'translate3d('+(109+movementX)+'px, '+(332+movementY)+'px,0) scale(0.7)'); // Fourth Icon
 					    	} else if(i===5) {
 					    		//trace('Icon 5 X: '+ (148 + movementX)+' Y: '+ (245 + movementY));
-					    		//transform(getElem('icon'+i),'translate3d('+(148+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((148 + movementX), (245 + movementY),i)+')');
+					    		// transform(getElem('icon'+i),'translate3d('+(148+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((148 + movementX), (245 + movementY),i)+')');
 					    	} else if(i===6) {
 					    		//transform(getElem('icon'+i),'translate3d('+(196+movementX)+'px, '+(158+movementY)+'px,0) scale(0.9)');  // Sixth Icon
 					    	} else if(i===7) {
@@ -218,7 +218,7 @@
 					    		//transform(getElem('icon'+i),'translate3d('+(196+movementX)+'px, '+(463+movementY)+'px,0) scale(0.2)');  // Fifteen Icon
 					    	} else if(i===16) {
 					    		//trace('Icon 16 X: '+ (148 + movementX)+' Y: '+ (245 + movementY));
-					    		//transform(getElem('icon'+i),'translate3d('+(70+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((70 + movementX), (245 + movementY),i)+')');
+					    		// transform(getElem('icon'+i),'translate3d('+(70+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((70 + movementX), (245 + movementY),i)+')');
 					    	} else if(i===17) { // Seventh Icon
 					    		//trace('Icon 17 X: '+ (245 + movementX)+' Y: '+ (245 + movementY));
 					    		transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((245 + movementX), (245 + movementY),i)+')');
@@ -255,43 +255,143 @@
 		    	if((x >= 220) && (x <= 270) && (y >= 220) && (y <= 270)){ // Scale is 1
 		    		//trace('Scale 1 Center');
 		    		return 1;
-		    	} else if((x >= 151) && (x <= 220) && (y >= 220) && (y <= 270)) { // Scale is .9
-		    		//trace('Scale 0.9 Left '+ x + ' '+ y);
-		    		//trace(ninetyCompLeft(x));
-		    		//return 0.9;
+		    	} 
+		    	// Ninety
+		    	else if((x >= 151) && (x <= 220) && (y >= 220) && (y <= 270)) { // Scale is .9
+		    		trace('Scale 0.9 ninetyCompLeft '+ x + ' '+ y);
 		    		return ninetyCompLeft(x);
-		    	} else if((x >= 271) && (x <= 341) && (y >= 220) && (y <= 270)) {
-		    		//trace('Scale 0.9 Right '+ x + ' '+ y);
-		    		//trace(ninetyCompRight(x));
-		    		return ninetyCompRight(x);
 		    	} else if((x >= 151) && (x <= 341) && (y >= 69) && (y <= 219)) { // Scale is .9
-		    		//trace('Scale 0.9 V2 Left '+ x + ' '+ y);
-		    		//trace(ninetyCompLeftUp(y));
-		    		return ninetyCompLeftUp(y);
+		    		trace('Scale 0.9 ninetyCompLeftUp '+ x + ' '+ y);
+		    		return ninetyCompLeftUp(x,y);
 		    	} else if((x >= 151) && (x <= 341) && (y >= 271) && (y <= 419)) { // Scale is .9
-		    		//trace('Scale 0.9 V3 Left '+ x + ' '+ y);
-		    		return ninetyCompLeftDown(y);
-		    	} else if((x >= 109) && (x <= 150) && (y >= 70) && (y <= 219)) { // Scale is .9
-		    		//trace('Scale 0.7 Left '+ x + ' '+ y);
+		    		trace('Scale 0.9 ninetyCompLeftDown '+ x + ' '+ y);
+		    		return ninetyCompLeftDown(x,y);
+		    	} else if((x >= 271) && (x <= 341) && (y >= 220) && (y <= 270)) {
+		    		trace('Scale 0.9 ninetyCompRight '+ x + ' '+ y);
+		    		return ninetyCompRight(x);
+		    	} else if((x >= 271) && (x <= 341) && (y >= 69) && (y <= 219)) { // Scale is .9
+		    		trace('Scale 0.9 ninetyCompRightUp '+ x + ' '+ y);
+		    		return ninetyCompRightUp(y);
+		    	} else if((x >= 151) && (x <= 341) && (y >= 271) && (y <= 419)) { // Scale is .9
+		    		trace('Scale 0.9 ninetyCompLeftDown '+ x + ' '+ y);
+		    		return ninetyCompRightDown(y);
+		    	}
+		    	// Seventy
+		    	else if((x >= 109) && (x <= 150) && (y >= 70) && (y <= 219)) { // Scale is .9
+		    		trace('Scale 0.7 seventyCompLeftUp '+ x + ' '+ y);
 		    		return seventyCompLeftUp(x,y);
-		    		//return 0.7;
 		    	} else if((x >= 342) && (x <= 383) && (y >= 70) && (y <= 219)) { // Scale is .9
-		    		trace('Scale 0.7 Right '+ x + ' '+ y);
+		    		trace('Scale 0.7 seventyCompRightUp '+ x + ' '+ y);
 		    		return seventyCompRightUp(x,y);
 		    	} else if((x >= 109) && (x <= 150) && (y >= 271) && (y <= 419)) { // Scale is .9
-		    		//trace('Scale 0.7 Left '+ x + ' '+ y);
-		    		return 0.7;
-		    	} else if((x >= 342) && (x <= 383) && (y >= 271) && (y <= 419)) { // Scale is .9
-		    		//trace('Scale 0.7 Right '+ x + ' '+ y);
-		    		return 0.7;
-		    	} else {
-		    		//trace('0.2 '+ x + ' '+ y);
-		    		return 0.2;
+		    		trace('Scale 0.7 seventyCompLeftDown '+ x + ' '+ y);
+		    		return seventyCompLeftDown(x,y);
+		    	} else if((x >= 342) && (x <= 381) && (y >= 271) && (y <= 419)) { // Scale is .9
+		    		trace('Scale 0.7 seventyCompRightDown '+ x + ' '+ y);
+		    		return seventyCompRightDown(x,y);
+		    	} 
+		    	// Twenty
+		    	else if((x >= 70) && (x <= 151) && (y >= 220) && (y <= 270)) {
+		    		trace('Scale 0.2 twentyCompLeft '+ x + ' '+ y);
+		    		return twentyCompLeft(x);
+		    	} else if((x >= 70) && (x <= 151) && (y >= 71) && (y <= 270)) {
+		    		trace('Scale 0.2 twentyCompLeftUpV1 '+ x + ' '+ y);
+		    		return twentyCompLeftUpV1(x);
+		    	} else if((x >= 70) && (x <= 196) && (y >= 27) && (y <= 71)) {
+		    		trace('Scale 0.2 twentyCompLeftUpV2 '+ x + ' '+ y);
+		    		return twentyCompLeftUpV2(y);
+		    	} else if((x >= 196) && (x <= 245) && (y >= 27) && (y <= 71)) {
+		    		trace('Scale 0.2 twentyCompLeftUpV3 '+ x + ' '+ y);
+		    		return twentyCompLeftUpV3(y);
+		    	} 
+
+		    	else if((x >= 341) && (x <= 420) && (y >= 220) && (y <= 270)) {
+		    		trace('Scale 0.2 twentyCompRight '+ x + ' '+ y);
+		    		return twentyCompRight(x);
+		    	} else if((x >= 341) && (x <= 420) && (y >= 27) && (y <= 270)) {
+		    		trace('Scale 0.2 twentyCompRightUpV1 '+ x + ' '+ y);
+		    		return twentyCompRightUpV1(x);
+		    	} else if((x >= 245) && (x <= 294) && (y >= 27) && (y <= 71)) {
+		    		trace('Scale 0.2 twentyCompRightUpV2'+ x + ' '+ y);
+		    		return twentyCompRightUpV2(y);
+		    	} else if((x >= 245) && (x <= 420) && (y >= 27) && (y <= 71)) {
+		    		trace('Scale 0.2 twentyCompRightUpV3 '+ x + ' '+ y);
+		    		return twentyCompRightUpV3(y);
+		    	} 
+
+		    	else if((x >= 70) && (x <= 151) && (y >= 220) && (y <= 270)) {
+		    		trace('Scale 0.2 twentyCompLeftDown '+ x + ' '+ y);
+		    		return twentyCompLeftDown(x);
+		    	} else if((x >= 70) && (x <= 151) && (y >= 271) && (y <= 419)) {
+		    		trace('Scale 0.2 twentyCompLeftDownV1 '+ x + ' '+ y);
+		    		return twentyCompLeftDownV1(x);
+		    	} else if((x >= 70) && (x <= 196) && (y >= 271) && (y <= 463)) {
+		    		trace('Scale 0.2 twentyCompLeftDownV2 '+ x + ' '+ y);
+		    		return twentyCompLeftDownV2(y);
+		    	} else if((x >= 196) && (x <= 245) && (y >= 271) && (y <= 463)) {
+		    		trace('Scale 0.2 twentyCompLeftDownV3 '+ x + ' '+ y);
+		    		return twentyCompLeftDownV3(y);
+		    	} 
+
+		    	else if((x >= 341) && (x <= 420) && (y >= 220) && (y <= 270)) {
+		    		trace('Scale 0.2 twentyCompRightDown '+ x + ' '+ y);
+		    		return twentyCompRightDown(x);
+		    	} else if((x >= 341) && (x <= 420) && (y >= 271) && (y <= 419)) {
+		    		trace('Scale 0.2 twentyCompRightDownV1 '+ x + ' '+ y);
+		    		return twentyCompRightDownV1(x);
+		    	} else if((x >= 245) && (x <= 294) && (y >= 271) && (y <= 463)) {
+		    		trace('Scale 0.2 twentyCompRightDownV2 '+ x + ' '+ y);
+		    		return twentyCompRightDownV2(y);
+		    	} else if((x >= 245) && (x <= 420) && (y >= 271) && (y <= 463)) {
+		    		trace('Scale 0.2 twentyCompRightDownV3 '+ x + ' '+ y);
+		    		return twentyCompRightDownV3(x);
+		    	}
+		    	// Zero
+		    	else if((x >= 51) && (x <= 70) && (y >= 27) && (y <= 463)) {
+		    		trace('Scale 0.2 zeroCompLeft '+ x + ' '+ y);
+		    		return zeroCompLeft(x);
+		    	} else if((x >= 420) && (x <= 434) && (y >= 27) && (y <= 463)) {
+		    		trace('Scale 0.2 zeroCompRight '+ x + ' '+ y);
+		    		return zeroCompRight(x);
+		    	} else if((x >= 51) && (x <= 434) && (y >= 16) && (y <= 27)) {
+		    		trace('Scale 0.2 zeroCompUp '+ x + ' '+ y);
+		    		return zeroCompUp(y);
+		    	} else if((x >= 51) && (x <= 434) && (y >= 463) && (y <= 468)) {
+		    		trace('Scale 0.2 zeroCompDown '+ x + ' '+ y);
+		    		return zeroCompDown(y);
+		    	}
+
+		    	else {
+		    		trace('Dead ENd '+ x + ' '+ y);
+		    		return 0;
 		    	}
 		    }
+		    // Ninety Function 
 		    function ninetyCompLeft(x) {
-		    	var diffResult = (x - 151),quatDiff = diffResult/61,finalResult;
+		    	var diffResult = Math.abs(x - 151),quatDiff = diffResult/69,finalResult;
 		    	if(quatDiff > 0.9) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.90};
+		    	return finalResult;
+		    }
+		    function ninetyCompLeftUp(x,y) {
+		    	var diffResult = Math.abs(y - 69),quatDiff = diffResult/150,finalResult;
+		    	if(quatDiff > 0.9) {
+		    		if((x >= 196) && ( x <= 294)) {
+		    			finalResult =  quatDiff.toFixed(2);
+		    		} else {
+		    			finalResult = 0.90;
+		    		}
+		    	} else {finalResult = 0.90};
+		    	return finalResult;
+		    }
+		    function ninetyCompLeftDown(x,y) {
+		    	var diffResult = Math.abs(y - 419),quatDiff = diffResult/148,finalResult;
+		    	if(quatDiff > 0.9) {
+		    		if((x >= 196) && ( x <= 294)) {
+		    			finalResult =  quatDiff.toFixed(2);
+		    		} else {
+		    			finalResult = 0.90;
+		    		}
+		    	} else {finalResult = 0.90};
 		    	return finalResult;
 		    }
 		    function ninetyCompRight(x) {
@@ -299,22 +399,23 @@
 		    	if(quatDiff > 0.9) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.90};
 		    	return finalResult;
 		    }
-		    function ninetyCompLeftUp(x) {
-		    	var diffResult = (x - 69),quatDiff = diffResult/150,finalResult;
+		    function ninetyCompRightUp(y) {
+		    	var diffResult = (y - 341),quatDiff = diffResult/150,finalResult;
 		    	if(quatDiff > 0.9) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.90};
 		    	return finalResult;
 		    }
-		    function ninetyCompLeftDown(x) {
-		    	var diffResult = Math.abs(x - 419),quatDiff = diffResult/148,finalResult;
+		    function ninetyCompRightDown(y) {
+		    	var diffResult = Math.abs(y - 419),quatDiff = diffResult/148,finalResult;
 		    	if(quatDiff > 0.9) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.90};
 		    	return finalResult;
 		    }
+		    // Seventy Function
 		    function seventyCompLeftUp(x,y) {
 		    	if(y > 71) {
 			    	var diffResult = (x - 109),quatDiff = ((diffResult/39)- 0.20),finalResult;
 			    	if(quatDiff > 0.7) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.70};
 		    	} else {
-		    		var diffResult = (x - 148),quatDiff = ((diffResult/39)- 0.25),finalResult;
+		    		var diffResult = (x - 148),quatDiff = ((diffResult/39)- 0.22),finalResult;
 			    	if(quatDiff > 0.7) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.70};
 		    	}
 		    	return finalResult;
@@ -322,12 +423,137 @@
 		    function seventyCompRightUp(x,y) {
 		    	if(y > 71) {
 			    	var diffResult = Math.abs(x - 383),quatDiff = ((diffResult/41)- 0.20),finalResult;
-			    	trace();
 			    	if(quatDiff > 0.7) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.70};
 		    	} else {
 		    		var diffResult = Math.abs(x - 383),quatDiff = ((diffResult/41)- 0.25),finalResult;
 			    	if(quatDiff > 0.7) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.70};
 		    	}
+		    	return finalResult;
+		    }
+		    function seventyCompLeftDown(x,y) {
+		    	if(y < 419) {
+			    	var diffResult = (x - 109),quatDiff = ((diffResult/39)- 0.20),finalResult;
+			    	if(quatDiff > 0.7) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.70};
+		    	} else {
+		    		var diffResult = (x - 148),quatDiff = ((diffResult/39)- 0.22),finalResult;
+			    	if(quatDiff > 0.7) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.70};
+		    	}
+		    	return finalResult;
+		    }
+		    function seventyCompRightDown(x,y) {
+		    	if(y < 419) {
+			    	var diffResult = Math.abs(x - 383),quatDiff = ((diffResult/41)- 0.20),finalResult;
+			    	if(quatDiff > 0.7) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.70};
+		    	} else {
+		    		var diffResult = Math.abs(x - 383),quatDiff = ((diffResult/41)- 0.22),finalResult;
+			    	if(quatDiff > 0.7) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0.70};
+		    	}
+		    	return finalResult;
+		    }
+		    // Twenty Function
+		    // Quadrant V2
+		    function twentyCompLeft(x) {
+		    	var diffResult = (x - 70),quatDiff = diffResult/90,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    function twentyCompLeftUpV1(x) {
+		    	var diffResult = (x - 70),quatDiff = diffResult/54,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    function twentyCompLeftUpV2(y) {
+		    	var diffResult = (y - 27),quatDiff = diffResult/55,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    function twentyCompLeftUpV3(y) {
+		    	var diffResult = (y - 27),quatDiff = diffResult/46,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    // Quadrant V1 
+		    function twentyCompRight(x) {
+		    	var diffResult = Math.abs(x - 420),quatDiff = diffResult/85,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    function twentyCompRightUpV1(x) {
+		    	var diffResult = Math.abs(x - 420),quatDiff = diffResult/100,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    function twentyCompRightUpV2(y) {
+		    	var diffResult = Math.abs(y - 27),quatDiff = diffResult/55,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    function twentyCompRightUpV3(y) {
+		    	var diffResult = Math.abs(y - 27),quatDiff = diffResult/46,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    // Quadrant V3
+		    function twentyCompLeftDown(x) {
+		    	var diffResult = Math.abs(x - 70),quatDiff = diffResult/90,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    function twentyCompLeftDownV1(x) {
+		    	var diffResult = Math.abs(x - 70),quatDiff = diffResult/54,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    function twentyCompLeftDownV2(y) {
+		    	var diffResult = Math.abs(y - 463),quatDiff = diffResult/60,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    function twentyCompLeftDownV3(y) {
+		    	var diffResult = Math.abs(y - 463),quatDiff = diffResult/46,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    // Quadrant V4
+		    function twentyCompRightDown(x) {
+		    	var diffResult = Math.abs(x - 420),quatDiff = diffResult/90,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    function twentyCompRightDownV1(x) {
+		    	var diffResult = Math.abs(x - 420),quatDiff = diffResult/54,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    function twentyCompRightDownV2(y) {
+		    	var diffResult = Math.abs(y - 463),quatDiff = diffResult/60,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    function twentyCompRightDownV3(x) {
+		    	var diffResult = Math.abs(x - 463),quatDiff = diffResult/155,finalResult;
+		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
+		    	return finalResult;
+		    }
+		    // Zero Function
+		    function zeroCompLeft(x) {
+		    	var diffResult = (x - 51),quatDiff = diffResult/100,finalResult;
+		    	if(quatDiff > 0) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0};
+		    	return finalResult;
+		    }
+		    function zeroCompRight(x) {
+		    	var diffResult = Math.abs(x - 434),quatDiff = diffResult/100,finalResult;
+		    	if(quatDiff > 0) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0};
+		    	return finalResult;
+		    }
+		    function zeroCompUp(y) {
+		    	var diffResult = Math.abs(y - 16),quatDiff = diffResult/50,finalResult;
+		    	if(quatDiff > 0.00) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0};
+		    	return finalResult;
+		    }
+		    function zeroCompDown(y) {
+		    	var diffResult = Math.abs(y - 468),quatDiff = diffResult/25,finalResult;
+		    	if(quatDiff > 0.00) {finalResult =  quatDiff.toFixed(2);} else {finalResult = 0};
 		    	return finalResult;
 		    }
 		    init();
