@@ -190,7 +190,7 @@
 					    		//transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(71+movementY)+'px,0) scale(0.9)');  // Second Icon
 					    	} else if(i===3) {
 					    		//trace('Icon 3 X: '+ (420 + movementX)+' Y: '+ (245 + movementY));
-					    		// transform(getElem('icon'+i),'translate3d('+(420+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((420 + movementX), (245 + movementY),i)+')');
+					    		// transform(getElem('icon'+i),'translate3d('+outerIcon((420+movementX),(245+movementY),i)+'px, '+(245+movementY)+'px,0) scale('+computationMark((420 + movementX), (245 + movementY),i)+')');
 					    	} else if(i===4) {
 					    		//transform(getElem('icon'+i),'translate3d('+(109+movementX)+'px, '+(332+movementY)+'px,0) scale(0.7)'); // Fourth Icon
 					    	} else if(i===5) {
@@ -218,7 +218,7 @@
 					    		//transform(getElem('icon'+i),'translate3d('+(196+movementX)+'px, '+(463+movementY)+'px,0) scale(0.2)');  // Fifteen Icon
 					    	} else if(i===16) {
 					    		//trace('Icon 16 X: '+ (148 + movementX)+' Y: '+ (245 + movementY));
-					    		// transform(getElem('icon'+i),'translate3d('+(70+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((70 + movementX), (245 + movementY),i)+')');
+					    		// transform(getElem('icon'+i),'translate3d('+outerIcon((70+movementX),(245+movementY),i)+'px, '+(245+movementY)+'px,0) scale('+computationMark((70 + movementX), (245 + movementY),i)+')');
 					    	} else if(i===17) { // Seventh Icon
 					    		//trace('Icon 17 X: '+ (245 + movementX)+' Y: '+ (245 + movementY));
 					    		transform(getElem('icon'+i),'translate3d('+(245+movementX)+'px, '+(245+movementY)+'px,0) scale('+computationMark((245 + movementX), (245 + movementY),i)+')');
@@ -239,7 +239,7 @@
 					    	} else if(i===25) {
 					    		//transform(getElem('icon'+i),'translate3d('+(70+movementX)+'px, '+(419+movementY)+'px,0) scale(0.2)');  // Twenty Five Icon
 					    	} else if(i===26) {
-					    		//transform(getElem('icon'+i),'translate3d('+(70+movementX)+'px, '+(71+movementY)+'px,0) scale(0.2)');  // Twenty Six Icon
+					    		// transform(getElem('icon'+i),'translate3d('+outerIcon((70+movementX),(71+movementY),i)+'px, '+(71+movementY)+'px,0) scale('+computationMark((70 + movementX), (71 + movementY),i)+')');  // Twenty Six Icon
 					    	} else if(i===27) {
 					    		//transform(getElem('icon'+i),'translate3d('+(420+movementX)+'px, '+(71+movementY)+'px,0) scale(0.2)');  // Twenty Seven Icon
 					    	};
@@ -248,6 +248,30 @@
 			    }
 		    }
 		    endHandler = function(e) {e.preventDefault();currentPositionX = movementX;currentPositionY = movementY;isTouchStart = false; distanceX = 0; distanceY = 0;isTrack = true;};
+		    function outerIcon(x,y,i) {
+		    	var diffResult, totalDiff, finalResult;
+		    	// Left Side
+		    	if(i === 16){
+		    		totalDiff = Math.abs(x - 70);
+		    		if(totalDiff <= 19) {diffResult = totalDiff;} else {diffResult = 19;}
+		    		if(x < 70){finalResult = x + diffResult;} else {finalResult = x - diffResult;}
+		    		return finalResult;
+		    	}
+		    	if(i === 26){
+		    		totalDiff = Math.abs(x - 70);
+		    		if(totalDiff <= 19) {diffResult = totalDiff;} else {diffResult = 19;}
+		    		if(x < 70){finalResult = x + diffResult;} else {finalResult = x - diffResult;}
+		    		return finalResult;
+		    	}
+		    	// Right Side
+		    	if(i === 3){
+		    		totalDiff = Math.abs(x - 420);
+		    		if(totalDiff <= 19) {diffResult = totalDiff;} else {diffResult = 19;}
+		    		if(x > 420){finalResult = x - diffResult;} else {finalResult = x + diffResult;}
+		    		return finalResult;
+		    	}
+
+		    }
 		    /*
 		     *
 		     */
@@ -297,9 +321,9 @@
 		    	} else if((x >= 70) && (x <= 151) && (y >= 71) && (y <= 270)) {
 		    		trace('Scale 0.2 twentyCompLeftUpV1 '+ x + ' '+ y);
 		    		return twentyCompLeftUpV1(x);
-		    	} else if((x >= 70) && (x <= 196) && (y >= 27) && (y <= 71)) {
+		    	} else if((x >= 70) && (x <= 196) && (y >= 38) && (y <= 71)) {
 		    		trace('Scale 0.2 twentyCompLeftUpV2 '+ x + ' '+ y);
-		    		return twentyCompLeftUpV2(y);
+		    		return twentyCompLeftUpV2(x);
 		    	} else if((x >= 196) && (x <= 245) && (y >= 27) && (y <= 71)) {
 		    		trace('Scale 0.2 twentyCompLeftUpV3 '+ x + ' '+ y);
 		    		return twentyCompLeftUpV3(y);
@@ -462,8 +486,9 @@
 		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
 		    	return finalResult;
 		    }
-		    function twentyCompLeftUpV2(y) {
-		    	var diffResult = (y - 27),quatDiff = diffResult/55,finalResult;
+		    function twentyCompLeftUpV2(x) {
+		    	var diffResult = Math.abs(x - 110),quatDiff = diffResult/60,finalResult;
+		    	trace('quatDiff '+quatDiff);
 		    	if(quatDiff <= 0.2) {finalResult = 0.2} else {finalResult =  quatDiff.toFixed(2);};
 		    	return finalResult;
 		    }

@@ -49,7 +49,7 @@ function transform(element, value) {
     element.style.OTransform = value;
     element.style['transform'] = value;
 }
-// 
+// Round off according to the decimal place
 function roundOff(num,place) {
 	num.toFixed(place)
 }
